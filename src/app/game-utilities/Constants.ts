@@ -1,0 +1,2 @@
+const UNIT_TYPES = 2
+const STRUCTURE_TYPES = 3
