@@ -1,4 +1,4 @@
-import { MilitaryType } from "./Game"
+import { MilitaryType } from "./Types"
 
 export class GameRegion{
     owner:number
@@ -25,4 +25,8 @@ export class GameData{
     constructor(regions: GameRegion[]) {
         this.regions = regions
     }
+}
+
+export class GameDataCooker{
+    
 }

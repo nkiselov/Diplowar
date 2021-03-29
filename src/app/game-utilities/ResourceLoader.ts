@@ -1,17 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 export interface ResourceLoader{
-    load(uri:string, onLoad:(blob:Blob) => void, onError:() => void)
+    load(uri:string, onLoad:(blob:Blob) => void, onError:(err:Error) => void) : void
 }
 
 export class HttpResourceLoader implements ResourceLoader{
     httpClient:HttpClient
 
-    load(uri: string, onLoad: (blob:Blob) => void, onError:() => void) {
+    constructor(httpClient:HttpClient){
+        this.httpClient = httpClient
+    }
+
+    load(uri: string, onLoad: (blob:Blob) => void, onError:(err:Error) => void) : void{
         this.httpClient
         .get(uri, { responseType: 'blob' })
-        .toPromise()
-        .then(res=>onLoad(res as Blob))
-        .catch(onError);
+        .subscribe(
+            data => onLoad(data),
+            error => onError(error)
+        );
     }
 }

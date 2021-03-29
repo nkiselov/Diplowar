@@ -4,6 +4,7 @@ $hoverColor: rgba(255,255,255,0.15);
 $activeColor: rgba(255,255,255,0.2);
 
 button{
+    user-select: none;
     font-size: medium;
     color:  white;
     background-color: transparent;
